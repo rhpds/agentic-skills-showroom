@@ -158,14 +158,19 @@ Without the skill, Claude gives general design advice. With it, Claude applies A
 
 *Step 7: Verify Installation*
 
-You can confirm the plugin is installed by listing your plugins:
+You can confirm the plugin is installed by checking the installed plugins config:
 
 [source,bash,role="execute"]
 ----
-ls ~/.claude/plugins/
+cat ~/.claude/plugins/installed_plugins.json
 ----
 
-You should see the `example-skills` plugin listed, which contains `brand-guidelines` among other skills.
+You should see `example-skills` listed among your installed plugins. You can also browse the cached plugin contents to see the skills it includes:
+
+[source,bash,role="execute"]
+----
+ls ~/.claude/plugins/cache/anthropic-agent-skills/example-skills/*/skills/
+----
 
 [NOTE]
 .Coming from Cursor?
