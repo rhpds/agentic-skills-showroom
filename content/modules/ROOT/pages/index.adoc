@@ -1,4 +1,4 @@
-= Claude Code Agent Skills
+= Agent Skills
 :navtitle: Course Overview
 
 This course teaches you to create, distribute, and compose Agent Skills for Claude Code. By the end you'll have built three skills, bundled them into a distributable marketplace, and used them in a multi-layer workflow alongside harness and workflow skills.
