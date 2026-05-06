@@ -89,12 +89,23 @@ claude
 
 *Step 4: Explicit Trigger*
 
-The most reliable way to use a skill is the explicit trigger — a slash command using the skill's name. Since `brand-guidelines` is part of the `example-skills` plugin, invoke it with the namespaced command:
+The most reliable way to use a skill is the explicit trigger — a slash command. You don't need to memorize the full namespaced name. Just type `/bran` and press `Tab` — Claude Code will autocomplete it to `/example-skills:brand-guidelines` for you.
+
+Try it:
+
+[source,text]
+----
+> /bran<Tab> what do you think of using #FF6B35 for buttons?
+----
+
+This expands to:
 
 [source,text]
 ----
 > /example-skills:brand-guidelines what do you think of using #FF6B35 for buttons?
 ----
+
+The full name `example-skills:brand-guidelines` is the namespaced form: `plugin-name:skill-name`. Tab completion means you rarely need to type it out — just enough characters to uniquely identify the skill.
 
 When the skill activates, you'll see it listed in the skill usage area of Claude's response. The output will reference Anthropic's specific brand colors, typography, and design standards — not generic color theory advice.
 
