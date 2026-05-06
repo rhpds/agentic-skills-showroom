@@ -11,21 +11,22 @@ In this module, you'll use `skill-creator`, a meta-skill that generates other sk
 This demonstrates that skills can be sophisticated tools, not just behavioral tweaks.
 It's also your first encounter with a skill from Anthropic's official marketplace.
 
-Install skill-creator from the official marketplace:
+If you followed Module 1, you already installed the `example-skills` plugin which includes `skill-creator`.
+If not, install it now:
 
 [source,bash,role="execute"]
 ----
-claude plugin install skill-creator@claude-plugins-official
+claude plugin install example-skills@anthropic-agent-skills
 ----
 
 The marketplace concept will be explained fully in Module 4.
-For now, know that you've installed a pre-built skill maintained by Anthropic.
+For now, know that you've installed a pre-built plugin maintained by Anthropic that bundles several skills together.
 
-After installation, read the skill-creator's own `SKILL.md` to see how a well-crafted skill is structured:
+Read the skill-creator's own `SKILL.md` to see how a well-crafted skill is structured:
 
 [source,bash,role="execute"]
 ----
-cat ~/.claude/plugins/cache/claude-plugins-official/*/skills/skill-creator/SKILL.md
+cat ~/.claude/plugins/cache/anthropic-agent-skills/example-skills/*/skills/skill-creator/SKILL.md
 ----
 
 Notice how the skill describes its own purpose, provides clear examples, and sets constraints.

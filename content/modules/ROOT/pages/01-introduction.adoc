@@ -65,18 +65,18 @@ First, see which plugin marketplaces you have access to:
 claude plugin marketplace list
 ----
 
-You should see `claude-plugins-official` among the results — this is Anthropic's curated collection.
+You should see `anthropic-agent-skills` among the results — this is Anthropic's curated skills collection (sourced from the `anthropics/skills` GitHub repo).
 
-*Step 2: Install the Skill*
+*Step 2: Install the Plugin*
 
-Install the brand guidelines skill from the official marketplace:
+The `brand-guidelines` skill is part of the `example-skills` plugin. Install the entire plugin:
 
 [source,bash,role="execute"]
 ----
-claude plugin install brand-guidelines@claude-plugins-official
+claude plugin install example-skills@anthropic-agent-skills
 ----
 
-Claude Code will download the skill and make it available for all your sessions.
+This downloads all the example skills — including `brand-guidelines`, `skill-creator`, `frontend-design`, and others. Claude Code will make them available for all your sessions.
 
 *Step 3: Implicit Trigger*
 
@@ -95,7 +95,7 @@ You can also invoke skills directly using slash commands:
 
 [source,text]
 ----
-> /brand-guidelines check the hero section colors
+> /example-skills:brand-guidelines check the hero section colors
 ----
 
 The explicit trigger guarantees the skill activates regardless of context. This is useful when you want to apply a specific lens to your query, even if the context doesn't naturally suggest it.
@@ -113,7 +113,7 @@ Without the skill:
 With the skill (explicit):
 [source,text]
 ----
-> /brand-guidelines what do you think of using #FF6B35 for buttons?
+> /example-skills:brand-guidelines what do you think of using #FF6B35 for buttons?
 ----
 
 The first might give you general color theory advice. The second will evaluate the choice through a brand lens — checking contrast ratios, consistency with existing palette, accessibility compliance, and alignment with brand values.
@@ -127,7 +127,7 @@ Confirm the skill is installed by listing your plugins directory:
 ls ~/.claude/plugins/
 ----
 
-You should see a `brand-guidelines` directory containing the skill's files.
+You should see the `example-skills` plugin listed, which contains the `brand-guidelines` skill among others.
 
 [NOTE]
 .Coming from Cursor?

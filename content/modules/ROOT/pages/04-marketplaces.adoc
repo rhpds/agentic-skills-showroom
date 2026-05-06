@@ -22,7 +22,7 @@ The solution is to bundle them into a **plugin** and distribute via a **marketpl
 
 == Marketplace Anatomy
 
-Let's examine the structure of a marketplace using Anthropic's official `claude-plugins-official` repository as a reference.
+Let's examine the structure of a marketplace using Anthropic's `anthropic-agent-skills` marketplace (the `anthropics/skills` GitHub repo) as a reference.
 
 A marketplace has:
 
