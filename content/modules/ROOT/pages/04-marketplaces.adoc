@@ -1,16 +1,16 @@
 = Marketplaces and Plugins
 :navtitle: 4. Marketplaces and Plugins
 
-You now have two skills living in `~/.claude/skills/`: `abstract-writer` and `conf-finder`. They work well, but they're just loose files. In this module, you'll bundle them with a third skill (`trip-report`) into a **plugin** and distribute it via a **marketplace**.
+You have `talk-outliner` and `abstract-writer` living in `~/.claude/skills/`. They work well, but they're just loose files. In this module, you'll create two more conference skills (`conf-finder` and `trip-report`), then bundle the three marketplace-ready skills into a **plugin** and distribute it via a **marketplace**.
 
 == From Skills to Plugins
 
-Right now, `abstract-writer` and `conf-finder` live as independent skills in your `~/.claude/skills/` directory. They're related — both serve the conference-speaking workflow — but Claude Code sees them as unrelated:
+Right now, your skills live as independent directories in `~/.claude/skills/`. They're related — they all serve the conference-speaking workflow — but Claude Code sees them as unrelated:
 
 - They have no shared identity
 - You can't distribute them as a set
 - There's no versioning
-- Name collisions are possible if someone installs another `abstract-writer` skill
+- Name collisions are possible if someone else installs a skill with the same name
 
 The solution is to bundle them into a **plugin** and distribute via a **marketplace**.
 
@@ -93,9 +93,38 @@ conference-toolkit/
 │                   └── format-report.py
 ----
 
+== Building conf-finder
+
+First, let's quickly create `conf-finder` — a skill that helps discover conferences relevant to your topic. Since you already know how to use skill-creator from Module 3, use it to generate this one:
+
+[source,text]
+----
+> /example-skills:skill-creator Create a skill called "conf-finder" that helps identify
+  relevant conferences for a given topic or domain. It should search for conferences by
+  topic area, geographic region, and time frame. Output should include conference name,
+  dates, location, CFP deadline, and a relevance note.
+----
+
+Inspect and refine the generated skill at `~/.claude/skills/conf-finder/SKILL.md`. Make sure the description is specific:
+
+[source,text]
+----
+Find technology conferences relevant to a specific topic. Use when the user wants to
+discover conferences, find CFP deadlines, or identify speaking opportunities.
+----
+
+Test it quickly:
+
+[source,text]
+----
+> /conf-finder Find conferences about AI developer tools in the next 3 months
+----
+
+Once it's working, move on to the more complex skill.
+
 == Building trip-report
 
-Before packaging our existing skills, we'll create a third skill: `trip-report`. This skill generates structured post-conference trip reports.
+Now create `trip-report` — the most complex skill so far, with an executable Python script. This skill generates structured post-conference trip reports.
 
 === Create the Skill Directory
 
@@ -466,8 +495,9 @@ There's no definitive answer yet — skill evaluation is an emerging practice. T
 
 You've built a complete marketplace with three skills bundled into a plugin:
 
-- **trip-report** generates structured post-conference reports
-- **abstract-writer** and **conf-finder** from previous modules
+- **conf-finder** discovers relevant conferences (generated with skill-creator)
+- **trip-report** generates structured post-conference reports (with executable scripts)
+- **abstract-writer** from Module 3
 - All three packaged as `conference-toolkit` plugin
 - Distributed via GitHub as a marketplace
 - Installed with namespace isolation: `/conference-toolkit:skill-name`

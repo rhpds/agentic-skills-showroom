@@ -15,23 +15,24 @@ Before starting, ensure you have:
 
 == What You'll Build
 
-Throughout this course, you'll create the **conference-toolkit** — a practical skill marketplace containing three complementary skills:
+Throughout this course, you'll build several skills that form a conference-speaking toolkit:
 
-* **abstract-writer** — Drafts compelling conference talk abstracts based on your topic and target audience
-* **conf-finder** — Discovers relevant conferences matching your interests and expertise
-* **trip-report** — Generates structured post-conference writeups and key takeaways
+* **talk-outliner** — Your first skill: generates structured talk outlines with timing breakdowns (Module 2)
+* **abstract-writer** — A more advanced skill with templates for drafting CFP abstracts (Module 3)
+* **conf-finder** — Discovers relevant conferences matching your interests (Module 4)
+* **trip-report** — Generates post-conference writeups with executable components (Module 4)
 
-These three skills will be bundled into a distributable marketplace called `conference-toolkit` that you can share and install across projects.
+The last three will be bundled into a distributable marketplace called `conference-toolkit` that you can share and install across projects.
 
 == Course Modules
 
 . xref:01-introduction.adoc[Introduction to Agent Skills] — What skills are, where they live, and how to use one from the Anthropic marketplace.
 
-. xref:02-first-skill.adoc[Creating Your First Skill] — Hand-write `abstract-writer` from scratch, understanding skill anatomy and progressive disclosure.
+. xref:02-first-skill.adoc[Creating Your First Skill] — Hand-write `talk-outliner` from scratch with a single SKILL.md file, learning skill anatomy and progressive disclosure.
 
-. xref:03-advanced-skills.adoc[Advanced Skills with skill-creator] — Use Anthropic's `skill-creator` meta-skill to generate `conf-finder`, then refine it.
+. xref:03-advanced-skills.adoc[Advanced Skills with skill-creator] — Use `skill-creator` to generate `abstract-writer`, then refine it with templates and supporting files.
 
-. xref:04-marketplaces.adoc[Marketplaces and Plugins] — Build `trip-report`, bundle all three skills into a `conference-toolkit` marketplace.
+. xref:04-marketplaces.adoc[Marketplaces and Plugins] — Build `conf-finder` and `trip-report`, bundle them with `abstract-writer` into a `conference-toolkit` marketplace.
 
 . xref:05-full-monty.adoc[The Full Monty] — Use superpowers + beads + your marketplace together in a real workflow.
 

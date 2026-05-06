@@ -148,7 +148,7 @@ You pick **AI Dev Summit**. The domain layer gave you what you needed: conferenc
 
 === Step 4: Write the Abstract (Domain Layer)
 
-Time to write. Use the abstract-writer skill you built in Module 2:
+Time to write. Use the abstract-writer skill you built in Module 3:
 
 [source,text]
 ----
@@ -212,13 +212,13 @@ Across five modules, you've built a complete mental model of the Agent Skills ec
 |Understood what skills are and used a pre-built skill (simple-greeter)
 
 |Module 2
-|Hand-wrote abstract-writer from scratch — learned skill anatomy, prompts, and arguments
+|Hand-wrote talk-outliner from scratch — learned skill anatomy with a single SKILL.md file
 
 |Module 3
-|Used skill-creator to generate and refine conf-finder — accelerated development with AI
+|Used skill-creator to generate abstract-writer — refined it with templates and supporting files
 
 |Module 4
-|Built trip-report and composed all three into conference-toolkit marketplace
+|Built conf-finder and trip-report, bundled all three into conference-toolkit marketplace
 
 |Module 5
 |Used three skill layers together (harness + domain + workflow) in a real workflow
