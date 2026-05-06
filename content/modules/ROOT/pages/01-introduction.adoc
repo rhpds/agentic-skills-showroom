@@ -105,18 +105,27 @@ How do you know a skill was invoked? Look for the skill name in Claude's respons
 
 *Step 5: Implicit Trigger*
 
-Skills can also activate automatically when Claude's assessment of your prompt matches the skill's description. This is called _implicit triggering_ — and it's less predictable than explicit triggers.
+Skills can also activate automatically when Claude's assessment of your prompt matches the skill's description. This is called _implicit triggering_ — and it depends on how well your phrasing matches the skill's description.
 
-Try a prompt that closely matches the `brand-guidelines` description:
+First, try a generic prompt that _doesn't_ mention Anthropic:
+
+[source,text]
+----
+> review these colors for brand consistency: #FF6B35 and #004E89
+----
+
+Claude will likely respond with generic color theory advice — asking "which brand?" or offering general contrast analysis. The skill didn't activate because nothing in your prompt matched its description closely enough.
+
+Now try again with a prompt that includes the keyword the skill is looking for:
 
 [source,text]
 ----
 > apply Anthropic brand styling to this heading section
 ----
 
-Because the skill's description mentions "Anthropic's official brand colors" and "style guidelines," Claude is more likely to activate it here. But implicit triggering depends on how well your phrasing matches the skill's description. A vague prompt like "review these colors" may not trigger it at all.
+This time the skill should activate — Claude will reference Anthropic's specific brand palette, typography, and design standards instead of asking for context.
 
-This is an important lesson: *write skill descriptions that are specific enough to trigger on the right prompts, but not so broad they trigger on everything.* You'll practice this when building your own skills in Module 2.
+The difference? The skill's description says _"Applies Anthropic's official brand colors..."_ — the word "Anthropic" in your prompt is what triggers the match. This is an important lesson: *implicit triggering depends entirely on how well the prompt matches the skill's description.* You'll practice writing effective descriptions when building your own skills in Module 2.
 
 *Step 6: Compare With and Without*
 
