@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "showroom_skills_course",
+  "project_id": "b1e97705-88ba-43e5-bb42-5f90ecce2bf4"
+}

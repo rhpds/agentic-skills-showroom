@@ -37,3 +37,8 @@ package-lock.json
 # Ignore yarn.lock for Yarn
 yarn.lock
 tok-doing-the-course
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
