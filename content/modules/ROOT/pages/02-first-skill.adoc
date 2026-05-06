@@ -4,7 +4,7 @@
 In this module, you'll build a skill from scratch.
 You'll learn how skills are structured, how Claude activates them, and how to test and iterate on your design.
 
-By the end, you'll have a working `abstract-writer` skill that generates conference talk abstracts tailored to specific formats and conferences.
+By the end, you'll have a working `talk-outliner` skill that generates structured talk outlines — built with just a single SKILL.md file.
 
 == Skill Anatomy
 
@@ -18,8 +18,8 @@ The frontmatter is a YAML block at the top of `SKILL.md`:
 [source,yaml]
 ----
 ---
-name: abstract-writer
-description: Generate conference talk abstracts tailored to specific conferences. Use when the user wants to write, draft, or improve a conference talk abstract, CFP submission, or speaking proposal.
+name: talk-outliner
+description: Generate structured talk outlines with timing breakdowns. Use when the user wants to plan, outline, or structure a conference talk, presentation, or lightning talk.
 ---
 ----
 
@@ -45,19 +45,22 @@ You can include:
 
 === Directory Structure
 
-Skills can reference additional files in their directory:
+For `talk-outliner`, the structure is minimal — just a single file:
 
 ----
-~/.claude/skills/abstract-writer/
-├── SKILL.md
-├── templates/
-│   ├── lightning-talk.md
-│   └── full-session.md
-└── examples/
-    └── sample-abstract.md
+~/.claude/skills/talk-outliner/
+└── SKILL.md
 ----
 
+Skills CAN include templates, scripts, and supporting files in their directory, but the simplest skills need only the SKILL.md file.
 Claude can read any file in the skill directory when the skill is active.
+
+[TIP]
+====
+Start simple.
+You can always add templates and supporting files later as your skill grows.
+Module 3 will show you a more complex skill structure with multiple files.
+====
 
 == Progressive Disclosure
 
@@ -79,139 +82,150 @@ Aim for 1-2 sentences that capture when to use the skill.
 
 For a deeper dive into how context works in agent systems, see https://tonykay.github.io/showroom-deep-agents/modules/07-subagent-fundamentals.html#_exercise_1_the_context_bloat_problem[Deep Agents: Subagent Fundamentals^].
 
-== Building `abstract-writer`
+== Building `talk-outliner`
 
-You'll create a skill that generates conference talk abstracts.
-This is a real-world use case: many developers speak at conferences and need to write compelling abstracts for CFP (Call for Proposals) submissions.
+You'll create a skill that generates structured talk outlines with timing breakdowns.
+This is a real-world use case: speakers need to plan presentations, break down time allocation, and structure content effectively.
 
 === Step 1: Create the Skill Directory
 
 [source,bash,role="execute"]
 ----
-mkdir -p ~/.claude/skills/abstract-writer/templates
+mkdir -p ~/.claude/skills/talk-outliner
 ----
 
 === Step 2: Write the SKILL.md File
 
-Create `~/.claude/skills/abstract-writer/SKILL.md` with the following content:
+Create `~/.claude/skills/talk-outliner/SKILL.md` with the following content:
 
 [source,markdown]
 ----
 ---
-name: abstract-writer
-description: Generate conference talk abstracts tailored to specific conferences. Use when the user wants to write, draft, or improve a conference talk abstract, CFP submission, or speaking proposal.
+name: talk-outliner
+description: Generate structured talk outlines with timing breakdowns. Use when the user wants to plan, outline, or structure a conference talk, presentation, or lightning talk.
 ---
 
-# Conference Abstract Writer
+# Talk Outliner
 
-Generate professional conference talk abstracts optimized for CFP submissions.
+Generate structured talk outlines with timing breakdowns and key points.
 
 ## Workflow
 
 1. **Gather information:**
    - If the user hasn't provided a talk topic, ask for it
-   - Ask for the target conference (or accept "general" for a generic abstract)
-   - Ask for the talk format if not clear: lightning talk (5-10 min), short talk (20-30 min), or full session (45-60 min)
+   - Ask for the time slot if not clear:
+     - Lightning talk (5 minutes)
+     - Short talk (20 minutes)
+     - Full session (30-45 minutes)
 
-2. **Check for templates:**
-   - Look in the `templates/` directory for relevant templates
-   - Use `lightning-talk.md` for short talks (5-10 minutes)
-   - Use `full-session.md` for longer talks (30+ minutes)
+2. **Generate the outline:**
+   - **Title suggestion:** Clear, engaging, under 100 characters
+   - **Time allocation:** Break down the time slot into sections with specific minute allocations:
+     - Introduction (hook, speaker intro, agenda)
+     - Main points (2-4 depending on time slot)
+     - Demo or example (if applicable)
+     - Q&A or closing
+   - **Key points:** 3-5 main takeaways with brief descriptions (1-2 sentences each)
+   - **Transitions:** Suggest how to move smoothly between sections
+   - **Takeaway:** One sentence describing what the audience should remember
 
-3. **Generate the abstract:**
-   - **Title:** Clear, engaging, under 100 characters
-   - **Summary:** 2-3 sentences explaining what the talk covers
-   - **Key takeaways:** 3-5 bullet points describing what attendees will learn
-   - **Target audience:** One sentence describing who should attend
-   - **Speaker bio placeholder:** Remind the user to customize this section
+3. **Format constraints:**
+   - Keep the entire outline to a single page
+   - Use bullet points for clarity
+   - Include specific minute allocations for each section
+   - Make timing realistic (don't overstuff short talks)
 
-4. **Format constraints:**
-   - Keep abstracts under 300 words (standard CFP limit)
-   - Use active voice and present tense
-   - Avoid jargon unless the conference is technical
-   - Emphasize actionable takeaways
+4. **Output:**
+   - Provide the outline in markdown format
+   - Use clear section headers
+   - Include timing breakdowns in section headers (e.g., "## Introduction (2 min)")
+   - End with the key takeaway
 
-5. **Output:**
-   - Provide the abstract in markdown format
-   - Include word count
-   - Suggest 2-3 alternative titles if appropriate
-----
+## Tips by Format
 
-Save this file to `~/.claude/skills/abstract-writer/SKILL.md`.
-
-=== Step 3: Create the Lightning Talk Template
-
-Create `~/.claude/skills/abstract-writer/templates/lightning-talk.md`:
-
-[source,markdown]
-----
-# Lightning Talk Template (5-10 minutes)
-
-## Format
-
-Lightning talks are short, focused presentations designed to introduce a concept or tool quickly.
-
-## Structure
-
-**Title:** [Engaging, action-oriented title under 80 characters]
-
-**Abstract:** [Single paragraph, 80-100 words max]
-
-**Key Takeaways:**
-- [Takeaway 1]
-- [Takeaway 2]
-- [Takeaway 3]
-
-**Target Audience:** [One sentence]
-
-## Tips for Lightning Talks
-
+**Lightning talk (5 min):**
 - Focus on ONE key idea
-- Skip background and theory
-- Show, don't tell (demos work great)
-- End with a clear call to action or next step
+- Skip background, dive straight in
+- 1 min intro, 3 min content, 1 min closing
+- No Q&A time (too short)
+
+**Short talk (20 min):**
+- 2-3 main points maximum
+- 2 min intro, 14 min content (split across points), 2 min Q&A, 2 min buffer
+- Include one brief example or demo
+
+**Full session (30-45 min):**
+- 3-4 main points with depth
+- 3 min intro, 25-35 min content, 5-7 min Q&A
+- Include multiple examples or interactive elements
+- Plan for audience questions throughout
 ----
 
-=== Step 4: Create the Full Session Template
+You can save this file manually, or use the following command to create it in one step:
 
-Create `~/.claude/skills/abstract-writer/templates/full-session.md`:
-
-[source,markdown]
+[source,bash,role="execute"]
 ----
-# Full Session Template (30-60 minutes)
+cat > ~/.claude/skills/talk-outliner/SKILL.md << 'SKILL_EOF'
+---
+name: talk-outliner
+description: Generate structured talk outlines with timing breakdowns. Use when the user wants to plan, outline, or structure a conference talk, presentation, or lightning talk.
+---
 
-## Format
+# Talk Outliner
 
-Full sessions allow deep exploration of a topic with examples, case studies, and audience interaction.
+Generate structured talk outlines with timing breakdowns and key points.
 
-## Structure
+## Workflow
 
-**Title:** [Clear, descriptive title under 100 characters]
+1. **Gather information:**
+   - If the user hasn't provided a talk topic, ask for it
+   - Ask for the time slot if not clear:
+     - Lightning talk (5 minutes)
+     - Short talk (20 minutes)
+     - Full session (30-45 minutes)
 
-**Abstract:** [2-3 paragraphs, 250-300 words total]
+2. **Generate the outline:**
+   - **Title suggestion:** Clear, engaging, under 100 characters
+   - **Time allocation:** Break down the time slot into sections with specific minute allocations:
+     - Introduction (hook, speaker intro, agenda)
+     - Main points (2-4 depending on time slot)
+     - Demo or example (if applicable)
+     - Q&A or closing
+   - **Key points:** 3-5 main takeaways with brief descriptions (1-2 sentences each)
+   - **Transitions:** Suggest how to move smoothly between sections
+   - **Takeaway:** One sentence describing what the audience should remember
 
-Paragraph 1: The problem or opportunity this talk addresses
-Paragraph 2: What you'll cover and how you'll approach it
-Paragraph 3: What attendees will take away
+3. **Format constraints:**
+   - Keep the entire outline to a single page
+   - Use bullet points for clarity
+   - Include specific minute allocations for each section
+   - Make timing realistic (don't overstuff short talks)
 
-**Learning Objectives:**
-- [Objective 1: Specific skill or knowledge]
-- [Objective 2: Specific skill or knowledge]
-- [Objective 3: Specific skill or knowledge]
-- [Objective 4: Specific skill or knowledge]
-- [Objective 5: Specific skill or knowledge]
+4. **Output:**
+   - Provide the outline in markdown format
+   - Use clear section headers
+   - Include timing breakdowns in section headers (e.g., "## Introduction (2 min)")
+   - End with the key takeaway
 
-**Target Audience:** [Description of ideal attendees and their experience level]
+## Tips by Format
 
-**Prerequisites:** [What attendees should know or have done before attending]
+**Lightning talk (5 min):**
+- Focus on ONE key idea
+- Skip background, dive straight in
+- 1 min intro, 3 min content, 1 min closing
+- No Q&A time (too short)
 
-## Tips for Full Sessions
+**Short talk (20 min):**
+- 2-3 main points maximum
+- 2 min intro, 14 min content (split across points), 2 min Q&A, 2 min buffer
+- Include one brief example or demo
 
-- Structure with clear sections (intro, 2-3 main points, conclusion)
-- Include real-world examples or case studies
-- Plan for Q&A time (reserve 5-10 minutes)
-- Provide resources for further learning
-- Consider live demos or interactive elements
+**Full session (30-45 min):**
+- 3-4 main points with depth
+- 3 min intro, 25-35 min content, 5-7 min Q&A
+- Include multiple examples or interactive elements
+- Plan for audience questions throughout
+SKILL_EOF
 ----
 
 == Testing and Iterating
@@ -225,15 +239,15 @@ Then try a natural language request:
 
 [source,text]
 ----
-I need to write an abstract for a talk about building CLI tools with Python, targeting PyCon
+I need to plan a 20-minute talk about Kubernetes networking
 ----
 
-Claude should recognize this matches the `abstract-writer` description and activate the skill automatically.
+Claude should recognize this matches the `talk-outliner` description and activate the skill automatically.
 You'll see a message like:
 
 [source,text]
 ----
-Using skill: abstract-writer
+Using skill: talk-outliner
 ----
 
 === Test Explicit Triggering
@@ -242,42 +256,44 @@ You can also invoke the skill directly:
 
 [source,text]
 ----
-/abstract-writer Write an abstract about Kubernetes security for KubeCon
+/talk-outliner Plan a lightning talk about prompt engineering best practices
 ----
 
 This forces the skill to activate, even if Claude wouldn't have chosen it automatically.
 
-=== Test the Lightning Talk Template
+=== Test Different Time Slots
 
-Try requesting a short format:
+Try requesting different formats:
 
 [source,text]
 ----
-/abstract-writer I need a lightning talk abstract about prompt engineering for a local meetup
+/talk-outliner I need to outline a full 45-minute session on building CLI tools with Python
 ----
 
-Claude should recognize this matches the lightning talk format and use the `templates/lightning-talk.md` file.
+Claude should adjust the time allocation and depth based on the time slot.
 
 === Iteration Guidance
 
 If the output doesn't match your expectations:
 
 * *Adjust the SKILL.md body:* Add more specific instructions or constraints
-* *Refine templates:* Make them more prescriptive or add examples
 * *Test edge cases:* Try vague requests, conflicting requirements, or missing information
 * *Update the description:* If Claude isn't activating the skill when you expect, make the description more specific
+* *Add examples:* Include sample outlines in the SKILL.md to guide Claude's output
 
 Skills improve through use.
 Don't aim for perfection on the first iteration — build, test, refine.
 
 == Summary
 
-You've built a skill from scratch, understanding:
+You've built a single-file skill from scratch, understanding:
 
 * Frontmatter fields (`name`, `description`)
 * Body instructions (the behavioral logic)
-* Directory structure (templates and supporting files)
+* The simplest possible directory structure (just SKILL.md)
 * Progressive disclosure (how Claude loads skills)
 * The test and iteration cycle
 
-Next, you'll use a meta-skill — `skill-creator` — to generate a skill automatically.
+Your `talk-outliner` lives in one SKILL.md file — the simplest possible structure.
+
+Next, you'll use `skill-creator` to build `abstract-writer` — a more complex skill with templates and supporting files.
