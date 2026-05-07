@@ -34,7 +34,7 @@ Read the skill-creator's own `SKILL.md` to see how a well-crafted skill is struc
 
 [source,bash,role="execute"]
 ----
-cat ~/.claude/plugins/cache/anthropic-agent-skills/example-skills/*/skills/skill-creator/SKILL.md
+less ~/.claude/plugins/cache/anthropic-agent-skills/example-skills/*/skills/skill-creator/SKILL.md
 ----
 
 Notice how the skill describes its own purpose, provides clear examples, and sets constraints.
@@ -61,7 +61,7 @@ Inspect what was generated:
 
 [source,bash,role="execute"]
 ----
-cat ~/.claude/skills/abstract-writer/SKILL.md
+less ~/.claude/skills/abstract-writer/SKILL.md
 ----
 
 Compare this to your manual work in Module 2 with `talk-outliner`.
