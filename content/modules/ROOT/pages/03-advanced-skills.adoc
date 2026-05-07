@@ -45,14 +45,21 @@ This is the template that skill-creator itself will follow when generating new s
 Now use skill-creator to generate a new skill called `abstract-writer`.
 This skill will help you write compelling conference talk abstracts tailored to specific conferences.
 
-Invoke skill-creator with a description:
+Invoke skill-creator — type `/skill` and press `Tab` to autocomplete, then paste the description below:
 
 [source,text]
 ----
-> /example-skills:skill-creator Create a skill called "abstract-writer" that generates
-  conference talk abstracts tailored to specific conferences. It should accept a talk
-  topic and target conference, produce a compelling abstract with title, summary,
-  learning objectives, and target audience. Keep abstracts under 300 words.
+> /example-skills:skill-creator
+----
+
+Then provide the following description of the skill you want to create:
+
+[source,text]
+----
+Create a skill called "abstract-writer" that generates conference talk abstracts
+tailored to specific conferences. It should accept a talk topic and target conference,
+produce a compelling abstract with title, summary, learning objectives, and target
+audience. Keep abstracts under 300 words.
 ----
 
 skill-creator will generate a new `SKILL.md` file at `~/.claude/skills/abstract-writer/SKILL.md`.
