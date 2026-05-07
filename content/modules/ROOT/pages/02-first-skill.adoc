@@ -96,7 +96,7 @@ mkdir -p ~/.claude/skills/talk-outliner
 
 === Step 2: Write the SKILL.md File
 
-Create `~/.claude/skills/talk-outliner/SKILL.md`:
+Create `~/.claude/skills/talk-outliner/SKILL.md` using your favorite editor with the content from *Code Preview*, or switch to the *Run* tab to create the file in one step:
 
 [tabs]
 ====
