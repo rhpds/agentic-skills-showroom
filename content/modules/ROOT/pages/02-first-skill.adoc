@@ -96,8 +96,12 @@ mkdir -p ~/.claude/skills/talk-outliner
 
 === Step 2: Write the SKILL.md File
 
-Create `~/.claude/skills/talk-outliner/SKILL.md` with the following content:
+Create `~/.claude/skills/talk-outliner/SKILL.md`:
 
+[tabs]
+====
+Code Preview::
++
 [source,markdown]
 ----
 ---
@@ -161,8 +165,8 @@ Generate structured talk outlines with timing breakdowns and key points.
 - Plan for audience questions throughout
 ----
 
-You can save this file manually, or use the following command to create it in one step:
-
+Run::
++
 [source,bash,role="execute"]
 ----
 cat > ~/.claude/skills/talk-outliner/SKILL.md << 'SKILL_EOF'
@@ -227,6 +231,7 @@ Generate structured talk outlines with timing breakdowns and key points.
 - Plan for audience questions throughout
 SKILL_EOF
 ----
+====
 
 == Testing and Iterating
 
