@@ -62,6 +62,13 @@ produce a compelling abstract with title, summary, learning objectives, and targ
 audience. Keep abstracts under 300 words.
 ----
 
+skill-creator will walk you through a structured workflow with *Research*, *Testing*, and *Submit* phases. When it asks how you want to evaluate the skill, choose *Quick vibe check* for now — we'll draft it and iterate based on your feedback.
+
+[NOTE]
+====
+Notice the *Full eval loop* option? skill-creator can run test cases with and without your skill, then show side-by-side comparisons using a built-in eval viewer. This is powerful for iterating on production skills — you write test prompts, define assertions, and measure whether your changes actually improve output. We'll revisit skill evaluation as a topic in Module 4.
+====
+
 skill-creator will generate a new `SKILL.md` file at `~/.claude/skills/abstract-writer/SKILL.md`.
 
 Inspect what was generated:
