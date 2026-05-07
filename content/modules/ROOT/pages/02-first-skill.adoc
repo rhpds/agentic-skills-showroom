@@ -144,6 +144,7 @@ Generate structured talk outlines with timing breakdowns and key points.
    - Use clear section headers
    - Include timing breakdowns in section headers (e.g., "## Introduction (2 min)")
    - End with the key takeaway
+   - Save the outline to a file named `<topic-slug>-outline.md` in the current directory
 
 ## Tips by Format
 
@@ -210,6 +211,7 @@ Generate structured talk outlines with timing breakdowns and key points.
    - Use clear section headers
    - Include timing breakdowns in section headers (e.g., "## Introduction (2 min)")
    - End with the key takeaway
+   - Save the outline to a file named `<topic-slug>-outline.md` in the current directory
 
 ## Tips by Format
 
@@ -248,6 +250,8 @@ I need to plan a 20-minute talk about Kubernetes networking
 ----
 
 Claude should recognize this matches the `talk-outliner` description and activate the skill automatically.
+Notice that it saves the outline to a file like `kubernetes-networking-outline.md` in your current directory — that's the save instruction in the skill doing its job. No copy-paste needed.
+
 You'll see a message like:
 
 [source,text]
@@ -285,6 +289,11 @@ If the output doesn't match your expectations:
 * *Test edge cases:* Try vague requests, conflicting requirements, or missing information
 * *Update the description:* If Claude isn't activating the skill when you expect, make the description more specific
 * *Add examples:* Include sample outlines in the SKILL.md to guide Claude's output
+
+[TIP]
+====
+Notice how the save-to-file instruction works: Claude Code has access to file system tools, so your skill can tell Claude to write outputs to files, not just display them in the terminal. This is a powerful pattern — skills can direct Claude to create files, read reference data, or run scripts as part of their workflow.
+====
 
 Skills improve through use.
 Don't aim for perfection on the first iteration — build, test, refine.
