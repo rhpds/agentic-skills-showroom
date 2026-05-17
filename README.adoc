@@ -1,34 +1,23 @@
-= Showroom Template
+= Agent Skills Showroom
 
-A template for creating Red Hat Showroom lab guides and demo content, built with https://antora.org[Antora].
+A hands-on course teaching how to create, use, and distribute Agent Skills for Claude Code, built with https://antora.org[Antora] and the https://github.com/rhpds/showroom_template_nookbag[Red Hat Demo Platform Showroom] framework.
 
-* 0% cruft
-* Red Hat Demo Platform UI Bundle default
-* Dev Mode extension that displays the asciidoc attributes you have to work with
+== Course Modules
 
-== Documentation
+1. **Introduction to Agent Skills** — history, installing skills, implicit vs explicit triggering
+2. **Creating Your First Skill** — skill anatomy, frontmatter, progressive disclosure, building `talk-outliner`
+3. **More Advanced Skills** — using `skill-creator` from the Anthropic marketplace to build `abstract-writer`
+4. **Marketplaces and Namespacing** — bundling skills into a plugin, creating a git repo marketplace
+5. **The Full Monty** — layered skills: superpowers harness + beads + third-party marketplace
+6. **Bonus: Programmatic Skills** — skills in Deep Agents, skills calling skills
 
-Full documentation — getting started, content structure, configuration, local development, and AI-assisted content creation — is available at:
+== Local Preview
 
-https://rhpds.github.io/showroom_template_nookbag/
-
-== Quick Start
-
-. https://github.com/rhpds/showroom_template_nookbag/generate[Create a repo from this template] (suggested naming: `<lab-name>-showroom`)
-. Clone your new repo and preview locally:
-+
 [source,sh]
 ----
 podman run --rm --name antora -v $PWD:/antora -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
 ----
-+
+
 On SELinux systems, append `:z` to the volume mount.
 
-. Edit content in `content/modules/ROOT/pages/`
-. See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html[Content Repository] docs for directory layout, Podman Compose with live reload, dev mode, and more.
-
-== Create Content with AI
-
-The https://github.com/rhpds/rhdp-skills-marketplace[RHDP Skills Marketplace] provides skills for Cursor IDE and Claude Code that generate labs, demos, and validate content against Red Hat standards.
-
-See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html#_creating_content_with_ai_tools[AI Tools documentation] for details.
+Content lives in `content/modules/ROOT/pages/`.
