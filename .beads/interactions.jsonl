@@ -1,1 +1,3 @@
 {"id":"int-135ca30c","kind":"field_change","created_at":"2026-05-06T02:27:28.35305Z","actor":"Tony Kay","issue_id":"showroom-skills-course-epr","extra":{"field":"status","new_value":"closed","old_value":"in_progress","reason":"All 9 tasks complete: scaffold, 7 content pages, build verification passes"}}
+{"id":"int-dcacb6c9","kind":"field_change","created_at":"2026-05-18T21:12:55.64956Z","actor":"Tony Kay","issue_id":"skil-htx","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}
+{"id":"int-41de481d","kind":"field_change","created_at":"2026-05-18T21:13:15.868405Z","actor":"Tony Kay","issue_id":"skil-htx","extra":{"field":"status","new_value":"open","old_value":"in_progress"}}

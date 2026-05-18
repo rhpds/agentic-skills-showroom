@@ -10,7 +10,16 @@
       "params": {}
     }
   },
-  "backups": {},
+  "backups": {
+    "backup_export": {
+      "name": "backup_export",
+      "url": "file:///Users/tok/Dropbox/PARAL/Projects/showroom-skills-course/.beads/backup",
+      "fetch_specs": [
+        "refs/heads/*:refs/remotes/backup_export/*"
+      ],
+      "params": {}
+    }
+  },
   "branches": {
     "main": {
       "head": "refs/heads/main",
